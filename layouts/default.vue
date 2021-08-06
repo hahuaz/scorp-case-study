@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-app>
-      <!--TODO change layout with user-agent instead of using css classes that depends devicewith -->
+      <!--TODO change layout instead of using class display property -->
       <div>
         <div class="mobile-header md:t-hidden">
           <view-m-header></view-m-header>

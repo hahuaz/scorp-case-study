@@ -1,7 +1,7 @@
 <template>
   <div class="t-px-4 t-flex t-justify-between t-items-center">
-    <ul class="nav t-flex t-gap-x-6">
-      <li class="logo__container h-8 t-w-16">
+    <ul class="nav t-flex t-gap-x-6 t-items-center">
+      <li class="logo__container t-h-12 t-w-16">
         <nuxt-link to="/">
           <img
             class="t-w-full t-h-full t-object-contain"

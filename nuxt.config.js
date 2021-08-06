@@ -17,7 +17,11 @@ export default {
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: ['~/assets/css/main.css', '~/assets/css/main.scss'],
+  css: [
+    '~/assets/css/main.css',
+    '~/assets/css/main.scss',
+    '~/assets/css/customize-vuetify.scss',
+  ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [],
@@ -63,7 +67,6 @@ export default {
   /* TODO add theme configuration */
   /* TODO remove vuetify breakpoints for clearence */
   vuetify: {
-    customVariables: ['~/assets/css/customize-vuetify.scss'],
     treeShake: true,
     theme: { disable: true },
   },
