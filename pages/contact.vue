@@ -1,10 +1,9 @@
 <template>
-  <div>
-    <language-input></language-input>
-  </div>
+  <div>this is contact page</div>
 </template>
 
 <script>
 export default {}
 </script>
+
 <style lang="scss" scoped></style>

@@ -1,10 +1,9 @@
 <template>
-  <div>
-    <language-input></language-input>
-  </div>
+  <div>hello from footer</div>
 </template>
 
 <script>
 export default {}
 </script>
+
 <style lang="scss" scoped></style>

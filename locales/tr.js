@@ -1,0 +1,42 @@
+export default {
+  welcome: 'Hoşgeldiniz',
+  home: 'Anasayfa',
+  about: 'Hakkımızda',
+  contact: 'İletişim',
+  'Our Apps': 'Aplikasyonlarımız',
+  hiring: 'İşe alıyoruz!',
+  'Sign In': 'Giriş Yap',
+  language: 'Dil:',
+  register: {
+    registration: 'Kayıt Ol',
+    tos: {
+      text: '{preText}{linkText}{tailText}',
+      preText: '',
+      tailText: "'ni okudum ve kabul ediyorum.",
+      linkText: 'Kullanıcı Sözleşmesi',
+    },
+    register: 'Kayıt Ol',
+    alreadyAccount: 'Zaten hesabın var mı?',
+    login: 'Giriş yap.',
+    rules: {
+      isEmail: 'Geçersiz e-mail.',
+      required: 'Lütfen doldurun.',
+      onlyString: 'Sayı kullanmayın.',
+      shouldContainNumber: 'Sayı içermelidir.',
+    },
+  },
+  login: {
+    log: 'Kayıt',
+    in: 'Ol',
+    login: 'Kayıt Ol',
+    'Forget Password?': 'Şifreni mi unuttun?',
+    dontAccount: 'Hesabın yok mu?',
+    register: 'Kayıt Ol',
+    rules: {
+      isEmail: 'Geçersiz e-mail.',
+      required: 'Lütfen doldurun.',
+    },
+    emailLabel: 'E-posta',
+    passwordLabel: 'Şifre',
+  },
+}

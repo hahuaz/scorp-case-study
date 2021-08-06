@@ -1,31 +1,26 @@
 export default {
-  // Target: https://go.nuxtjs.dev/config-target
-  target: 'static',
+  ssr: false,
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'the-scorp',
+    title: 'Scorp Company',
     htmlAttrs: {
-      lang: 'en'
+      lang: 'en',
     },
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: '' },
-      { name: 'format-detection', content: 'telephone=no' }
+      { name: 'format-detection', content: 'telephone=no' },
     ],
-    link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
-    ]
+    link: [{ rel: 'icon', type: 'image/x-icon', href: '/ico.png' }],
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: [
-  ],
+  css: ['~/assets/css/main.css', '~/assets/css/main.scss'],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [
-  ],
+  plugins: [],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -36,18 +31,40 @@ export default {
     '@nuxtjs/eslint-module',
     // https://go.nuxtjs.dev/tailwindcss
     '@nuxtjs/tailwindcss',
+    '@nuxtjs/vuetify',
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
+    '@nuxtjs/i18n',
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {},
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {
-  }
+  build: {},
+
+  /* TODO get content from strapi then export */
+  i18n: {
+    locales: [
+      { code: 'en', iso: 'en', file: 'en.js' },
+      { code: 'tr', iso: 'tr', file: 'tr.js' },
+    ],
+    defaultLocale: 'en',
+    langDir: '~/locales',
+    vueI18n: {
+      fallbackLocale: 'en',
+    },
+    strategy: 'no_prefix',
+  },
+  /* TODO add theme configuration */
+  /* TODO remove vuetify breakpoints for clearence */
+  vuetify: {
+    customVariables: ['~/assets/css/customize-vuetify.scss'],
+    treeShake: true,
+    theme: { disable: true },
+  },
 }
