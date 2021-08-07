@@ -100,7 +100,7 @@
           </li>
         </ul>
       </div>
-      <!-- TODO expansion content's height is 100% by default. it should be 100vh. -->
+      <!-- TODO why expansion content's height is 100% by default? it should be 100vh. -->
       <template #append>
         <div
           class="

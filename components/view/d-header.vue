@@ -109,7 +109,8 @@
         @click="toggleLogRegVisibility"
       >
         <v-icon color="white">mdi-account</v-icon>
-        <span class="t-ml-2 t-font-semibold">{{ $t('Sign In') }}</span>
+        <span v-if="userName"> {{ userName }}</span>
+        <span v-else class="t-ml-2 t-font-semibold">{{ $t('Sign In') }}</span>
       </span>
       <v-dialog
         :value="logRegType === 'login'"
@@ -142,15 +143,18 @@ export default {
     logRegType() {
       return this.$store.state.ui.logRegType
     },
+    userName() {
+      return this.$store.state.user.user?.firstname
+    },
+  },
+  mounted() {
+    this.activePage = this.$route.path
   },
   methods: {
     ...mapMutations('ui', [
       'toggleLogRegType', // also supports payload `this.nameOfMutation(amount)`
       'toggleLogRegVisibility',
     ]),
-  },
-  mounted() {
-    this.activePage = this.$route.path
   },
 }
 </script>

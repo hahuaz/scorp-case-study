@@ -74,7 +74,7 @@
       <v-checkbox
         v-model="terms"
         dense
-        color="#e63946"
+        color="#457b9d"
         hide-details
       ></v-checkbox>
       <!-- TODO look up for better interpolation solution  -->
@@ -96,16 +96,17 @@
         </template>
       </i18n>
     </div>
-    <div class="t-text-center">
-      <a
-        href="#javascript"
+    <div class="">
+      <v-btn
+        large
+        :loading="loading"
         class="
-          t-text-center t-inline-block t-py-4 t-px-12
+          t-px-12
           xl:t-px-48
           t-rounded-full t-bg-fourth t-text-white t-text-lg
         "
         @click="registerClicked"
-        >{{ $t('register.register') }}</a
+        >{{ $t('register.register') }}</v-btn
       >
     </div>
     <div
@@ -115,12 +116,21 @@
         {{ $t('register.alreadyAccount') }}
 
         <span
-          class="t-cursor-pointer t-text-primary"
+          class="t-cursor-pointer t-text-primary t-font-"
           @click="toggleLogRegType"
           >{{ $t('register.login') }}</span
         >
       </div>
     </div>
+    <v-snackbar
+      v-model="showSnackbar"
+      outlined
+      top
+      :color="snackbarColor"
+      content-class="t-text-lg t-font-medium t-font-mono "
+    >
+      {{ snackbarText }}
+    </v-snackbar>
   </div>
 </template>
 
@@ -137,16 +147,40 @@ export default {
       email: null,
       password: null,
       terms: false,
-
-      i18nRegisterRules: this.$i18n.messages[this.$i18n.locale].register.rules,
+      loading: false,
+      showSnackbar: false,
+      snackbarText: '',
+      snackbarColor: 'blue',
     }
   },
 
   methods: {
-    registerClicked() {
+    async registerClicked() {
       /* if one input is invalid don't submit */
-      if (this.$refs.form.validate() === false) return
-      console.log('continue')
+      if (this.$refs.form.validate() === false || !this.terms) return
+      this.loading = true
+      try {
+        await this.$store.dispatch('user/createUser', {
+          firstname: this.firstname,
+          lastname: this.lastname,
+          email: this.email,
+          password: this.password,
+        })
+        this.snackbarColor = 'green'
+        this.snackbarText =
+          'Registration is succesfull. You will be redirected.'
+        this.showSnackbar = true
+
+        setTimeout(() => {
+          this.$store.commit('ui/toggleLogRegVisibility')
+          this.$router.push('/')
+        }, 2000)
+      } catch (error) {
+        this.snackbarColor = 'red'
+        this.snackbarText = error.message
+        this.showSnackbar = true
+      }
+      this.loading = false
     },
 
     ...mapMutations('ui', [

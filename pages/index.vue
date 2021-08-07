@@ -1,10 +1,20 @@
 <template>
-  <div class="hero t-relative t-h-screen sm:t-h-144 t-pt-14">
-    <h1
-      class="t-text-gray-100 t-text-6xl t-font-semibold t-p-4 t-leading-relaxed"
-    >
-      World's Most Genuine Social Network
-    </h1>
+  <div class="hero t-relative t-min-h-screen sm:t-h-144 t-pt-14">
+    <div class="t-max-w-screen-xl t-mx-auto">
+      <pre
+        class="
+          t-text-gray-100 t-text-4xl
+          sm:t-text-7xl
+          t-font-semibold t-p-4 t-leading-relaxed
+        "
+      >
+World's
+ Most 
+  Genuine
+   Social
+    Network
+      </pre>
+    </div>
   </div>
 </template>
 

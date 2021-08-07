@@ -64,16 +64,26 @@
             :rules="[required]"
           ></v-textarea>
           <div class="t-text-center sm:t-col-span-2 t-mt-4">
-            <a
-              href="#javascript"
+            <v-btn
+              large
+              :loading="loading"
               class="
-                t-py-4 t-px-24 t-inline-block
+                t-px-24 t-inline-block
                 sm:t-px-48
                 t-rounded-full t-bg-fourth t-text-white t-text-lg
               "
               @click="onSendClick"
-              >Send</a
+              >Send</v-btn
             >
+            <v-snackbar
+              v-model="showSnackbar"
+              outlined
+              top
+              :color="snackbarColor"
+              content-class="t-text-lg t-font-medium t-font-mono "
+            >
+              {{ snackbarText }}
+            </v-snackbar>
           </div>
         </div>
       </v-form>
@@ -92,7 +102,6 @@ export default {
       email: null,
       phone: null,
       country: null,
-      step: 1,
       countryList: [
         { id: 'TR', name: 'Turkey' },
         { id: 'US', name: 'United States of America' },
@@ -103,13 +112,34 @@ export default {
         { id: 'BR', name: 'Brazil' },
         { id: 'ZW', name: 'Zimbabwe' },
       ],
+      loading: false,
     }
   },
   methods: {
-    onSendClick() {
+    async onSendClick() {
       /* if one input is invalid don't submit */
       if (this.$refs.form.validate() === false) return
-      console.log('continue')
+      this.loading = true
+      try {
+        await this.$store.dispatch('user/createMessage', {
+          name: this.name,
+          email: this.email,
+          phone: this.phone,
+          country: this.country,
+        })
+        this.snackbarColor = 'green'
+        this.snackbarText = 'Your message pushed the local storage!'
+        this.showSnackbar = true
+
+        setTimeout(() => {
+          this.$router.push('/')
+        }, 2000)
+      } catch (error) {
+        this.snackbarColor = 'red'
+        this.snackbarText = error.message
+        this.showSnackbar = true
+      }
+      this.loading = false
     },
   },
 }

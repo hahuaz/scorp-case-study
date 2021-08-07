@@ -2,12 +2,7 @@ export const state = () => ({
   logRegType: null,
 })
 
-export const actions = {
-  // async fetchForecast({ commit }, { adress }) {
-  //   const forecast = await this.$axios.$get(`api/?adress=${adress}`)
-  //   commit('ADD_FORECAST', forecast)
-  // },
-}
+export const actions = {}
 
 export const mutations = {
   toggleLogRegType(state) {
