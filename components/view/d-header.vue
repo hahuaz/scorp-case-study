@@ -89,7 +89,28 @@
         </nuxt-link>
       </li>
     </ul>
-    <div>
+    <div class="t-text-center">
+      <template>
+        <span
+          v-for="locale in $i18n.locales"
+          :key="locale.code"
+          class="
+            t-inline-block
+            t-w-8
+            t-py-0.5
+            t-rounded-md
+            t-bg-white
+            t-border
+            t-border-fifth
+            t-shadow-md
+            t-cursor-pointer
+            t-mr-2
+          "
+          @click="changeLocale(locale.code)"
+        >
+          {{ locale.iso }}
+        </span>
+      </template>
       <span
         class="t-text-green-500 t-mr-4 t-cursor-pointer"
         @click="toggleLogRegVisibility"
@@ -155,6 +176,9 @@ export default {
       'toggleLogRegType', // also supports payload `this.nameOfMutation(amount)`
       'toggleLogRegVisibility',
     ]),
+    changeLocale(code) {
+      this.$i18n.setLocale(code)
+    },
   },
 }
 </script>

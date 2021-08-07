@@ -113,6 +113,9 @@ export default {
         { id: 'ZW', name: 'Zimbabwe' },
       ],
       loading: false,
+      showSnackbar: false,
+      snackbarText: '',
+      snackbarColor: 'blue',
     }
   },
   methods: {

@@ -59,6 +59,16 @@ export default {
       fallbackLocale: 'en',
     },
     strategy: 'no_prefix',
+    detectBrowserLanguage: {
+      alwaysRedirect: false,
+      fallbackLocale: '',
+      redirectOn: 'no prefix',
+      useCookie: true,
+      cookieCrossOrigin: false,
+      cookieDomain: null,
+      cookieKey: 'i18n_redirected',
+      cookieSecure: false,
+    },
   },
   /* TODO add theme configuration */
   /* TODO remove vuetify breakpoints for clearence */

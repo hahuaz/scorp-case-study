@@ -1,4 +1,6 @@
-# the-scorp
+# Case study for frontend position at Scorp
+
+You can find the deployed site [on netlify!](http://google.com)
 
 ## Build Setup
 
@@ -17,53 +19,21 @@ $ npm run start
 $ npm run generate
 ```
 
-For detailed explanation on how things work, check out the [documentation](https://nuxtjs.org).
+## worth to mention
 
-## Special Directories
+- Interpolation feature is applied. Browser language detaction is active. Input field errors also localized. If you change the language after opening and closing the modal, modal rules error still not localized.this is because vuetify keeps alive the modal. Should destroy the modal when closed.
+- Used mixins for dry princable on input rules. though, first thing that came to my mind was injection but mixins suited better.
+- Vuex state persisted for user object and contact messages.
+- Custom desktop navbar(without UI)
+- If team prefers html elements to be clear from utility classes i can @apply tailwind classes to spesicif class.
+- One problem i faced on this project using vuetify with tailwind. There are some class conflicts between these two. Vuetify overrides tailwind which doesn't suit my workflow cause i am used to tailwind. Seeing an ul element's left-padding added by Vuetify bummed me out and forced me to override sass variable. However, tailwind's preflight feature wants you to be specific and create unique design everytime which i prefer.Fallowing approaches could be used for tailwind to take precedence:
+  - Compile tailwind's css after Vuetify
+  - Add important property to tailwind config
+  - I added prefix to tailwind which results boilerplate class names.
+- This study took me 12 hour approximately from scratch. It was my first time that i localized a project which consumed half of my time.
 
-You can create the following extra directories, some of which have special behaviors. Only `pages` is required; you can delete them if you don't want to use their functionality.
+## todos
 
-### `assets`
+- you can check the todos with todo tree vs code extension.
 
-The assets directory contains your uncompiled assets such as Stylus or Sass files, images, or fonts.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/assets).
-
-### `components`
-
-The components directory contains your Vue.js components. Components make up the different parts of your page and can be reused and imported into your pages, layouts and even other components.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/components).
-
-### `layouts`
-
-Layouts are a great help when you want to change the look and feel of your Nuxt app, whether you want to include a sidebar or have distinct layouts for mobile and desktop.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/layouts).
-
-
-### `pages`
-
-This directory contains your application views and routes. Nuxt will read all the `*.vue` files inside this directory and setup Vue Router automatically.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/get-started/routing).
-
-### `plugins`
-
-The plugins directory contains JavaScript plugins that you want to run before instantiating the root Vue.js Application. This is the place to add Vue plugins and to inject functions or constants. Every time you need to use `Vue.use()`, you should create a file in `plugins/` and add its path to plugins in `nuxt.config.js`.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/plugins).
-
-### `static`
-
-This directory contains your static files. Each file inside this directory is mapped to `/`.
-
-Example: `/static/robots.txt` is mapped as `/robots.txt`.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/static).
-
-### `store`
-
-This directory contains your Vuex store files. Creating a file in this directory automatically activates Vuex.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/store).
+## bugs
