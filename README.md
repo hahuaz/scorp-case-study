@@ -1,6 +1,6 @@
 # Case study for frontend position at Scorp
 
-You can find the deployed site [on netlify!](http://google.com)
+You can find the deployed site [on netlify!](https://hahuaz-scorp.netlify.app/)
 
 ## Build Setup
 
@@ -19,7 +19,7 @@ $ npm run start
 $ npm run generate
 ```
 
-## worth to mention
+## Worth to mention
 
 - Interpolation feature is applied. Browser language detaction is active. Input field errors also localized. If you change the language after opening and closing the modal, modal rules error still not localized.this is because vuetify keeps alive the modal. Should destroy the modal when closed.
 - Used mixins for dry princable on input rules. though, first thing that came to my mind was injection but mixins suited better.
@@ -34,6 +34,6 @@ $ npm run generate
 
 ## todos
 
-- you can check the todos with todo tree vs code extension.
+- you can check the todos with "todo tree" vs code extension.
 
 ## bugs
