@@ -26,9 +26,9 @@ export default {
     },
   },
   login: {
-    log: 'Kayıt',
-    in: 'Ol',
-    login: 'Kayıt Ol',
+    log: 'Giriş',
+    in: 'Yap',
+    login: 'Giriş yap',
     'Forget Password?': 'Şifreni mi unuttun?',
     dontAccount: 'Hesabın yok mu?',
     register: 'Kayıt Ol',

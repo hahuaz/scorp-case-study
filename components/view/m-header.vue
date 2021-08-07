@@ -1,11 +1,11 @@
 <template>
   <div>
-    <v-app-bar color="transparent" dark hide-on-scroll>
+    <v-app-bar color="transparent" absolute flat dark>
       <v-app-bar-nav-icon @click="drawer = true">
         <template #default> </template>
       </v-app-bar-nav-icon>
 
-      <v-toolbar-title class="t-flex t-space-x-2">
+      <v-toolbar-title class="t-flex t-space-x-2 t-text-gray-100">
         <v-icon> mdi-{{ pathObject.icon }} </v-icon>
         <i18n :path="pathObject.pageName" tag="h1"> </i18n>
       </v-toolbar-title>
@@ -100,6 +100,7 @@
           </li>
         </ul>
       </div>
+      <!-- TODO expansion content's height is 100% by default. it should be 100vh. -->
       <template #append>
         <div
           class="
@@ -180,9 +181,10 @@ export default {
 ::v-deep .v-toolbar__content {
   flex-direction: row-reverse !important;
   justify-content: space-between !important;
-  color: red !important;
+  padding: unset !important;
+  @apply t-text-gray-100;
   .v-icon {
-    color: red !important;
+    @apply t-text-gray-100;
   }
 }
 ::v-deep .v-expansion-panel-header {
@@ -200,6 +202,9 @@ export default {
 }
 
 .nav__link.active {
-  background-color: rgba(255, 124, 124, 0.529);
+  background-color: rgb(223, 223, 223);
+}
+::v-deep .v-navigation-drawer {
+  height: 100vh !important;
 }
 </style>

@@ -99,7 +99,6 @@ Aloha - TURKEY
             </div>
             <div>
               <ul class="t-space-y-2 sm:t-space-y-2">
-                <h1 class="t-pb-1">Download Apps</h1>
                 <li>
                   <a href="#">
                     <div
@@ -133,6 +132,7 @@ Aloha - TURKEY
                         t-grid
                         t-gap-x-1
                         t-items-center
+                        t-bg-w
                       "
                     >
                       <v-icon class="t-text-fourth">mdi-google-play</v-icon>
@@ -143,6 +143,28 @@ Aloha - TURKEY
                       </div>
                     </div>
                   </a>
+                </li>
+                <li class="t-text-center t-pt-4 t-space-x-2">
+                  <template>
+                    <span
+                      v-for="locale in $i18n.locales"
+                      :key="locale.code"
+                      class="
+                        t-inline-block
+                        t-w-8
+                        t-py-0.5
+                        t-rounded-md
+                        t-bg-white
+                        t-border
+                        t-border-fifth
+                        t-shadow-md
+                        t-cursor-pointer
+                      "
+                      @click="changeLocale(locale.code)"
+                    >
+                      {{ locale.iso }}
+                    </span>
+                  </template>
                 </li>
               </ul>
             </div>
@@ -177,7 +199,13 @@ Aloha - TURKEY
 </template>
 
 <script>
-export default {}
+export default {
+  methods: {
+    changeLocale(code) {
+      this.$i18n.setLocale(code)
+    },
+  },
+}
 </script>
 
 <style lang="scss" scoped>

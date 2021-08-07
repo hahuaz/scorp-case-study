@@ -17,7 +17,7 @@
         {{ $t('login.log') }}
         <span class="t-text-fourth">{{ $t('login.in') }}</span>
       </div>
-      <div class="try t-px-4 t-mx-auto t-space-y-4 t-w-80 sm:t-w-96">
+      <div class="try t-px-4 t-mx-auto t-space-y-4 sm:t-w-96 t-text-center">
         <v-form ref="form">
           <v-text-field
             v-model="email"
@@ -81,8 +81,10 @@
 
 <script>
 import { mapMutations } from 'vuex'
+import global from '~/mixins/global.js'
 
 export default {
+  mixins: [global],
   data() {
     return {
       invalid: true,
@@ -92,14 +94,6 @@ export default {
     }
   },
   methods: {
-    isEmail(value) {
-      const pattern =
-        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-      return pattern.test(value) || this.i18nLogin.rules.isEmail
-    },
-    required(value) {
-      return !!value || this.i18nLogin.rules.required
-    },
     loginClicked() {
       /* if one input is invalid don't submit */
       if (this.$refs.form.validate() === false) return

@@ -28,8 +28,8 @@ export default {
   },
 
   methods: {
-    async onLocaleChange(e) {
-      await this.$i18n.setLocale(e.target.value)
+    onLocaleChange(e) {
+      this.$i18n.setLocale(e.target.value)
     },
   },
 }
