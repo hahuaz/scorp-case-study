@@ -172,6 +172,6 @@ export default {
       rgba(black, 0.3),
       rgba(black, 0.3)
     ),
-    url('/images/contact-hero.png');
+    url('/images/contact-hero.jpg');
 }
 </style>

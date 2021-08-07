@@ -39,6 +39,6 @@ export default {}
       rgba(black, 0.6),
       rgba(black, 0.6)
     ),
-    url('/images/about-hero.png');
+    url('/images/about-hero.jpg');
 }
 </style>

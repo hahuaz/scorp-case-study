@@ -22,6 +22,6 @@ export default {}
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  background-image: url('/images/landing-hero.png');
+  background-image: url('/images/landing-hero.jpg');
 }
 </style>
