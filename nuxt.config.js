@@ -83,6 +83,8 @@ export default {
     theme: { disable: true },
   },
   router: {
-    middleware: ['mobile'],
+    middleware: [
+      'mobile',
+    ] /* TODO use nuxt.$device module instead. but it dosn't support change layout onResize with static sites, too. */,
   },
 }
