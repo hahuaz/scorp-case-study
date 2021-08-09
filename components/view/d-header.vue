@@ -118,7 +118,22 @@
         <v-icon color="#10b981">mdi-chart-bubble</v-icon>
         <span class="t-font-semibold">{{ $t('hiring') }}</span>
       </span>
-      <span
+      <div v-if="userName" class="t-inline-block">
+        <v-menu offset-y>
+          <template #activator="{ on, attrs }">
+            <v-btn color="primary" dark v-bind="attrs" v-on="on">
+              {{ userName }}
+            </v-btn>
+          </template>
+          <v-list>
+            <v-list-item @click="logoutUser">
+              <v-list-item-title>Logout</v-list-item-title>
+            </v-list-item>
+          </v-list>
+        </v-menu>
+      </div>
+      <div
+        v-else
         class="
           t-bg-fifth
           t-text-white
@@ -130,9 +145,9 @@
         @click="toggleLogRegVisibility"
       >
         <v-icon color="white">mdi-account</v-icon>
-        <span v-if="userName"> {{ userName }}</span>
-        <span v-else class="t-ml-2 t-font-semibold">{{ $t('Sign In') }}</span>
-      </span>
+
+        <span class="t-ml-2 t-font-semibold">{{ $t('Sign In') }}</span>
+      </div>
       <v-dialog
         :value="logRegType === 'login'"
         @click:outside="toggleLogRegVisibility"
@@ -178,6 +193,14 @@ export default {
     ]),
     changeLocale(code) {
       this.$i18n.setLocale(code)
+    },
+    async logoutUser() {
+      try {
+        await this.$store.dispatch('user/logoutUser')
+        this.$router.push('/')
+      } catch (error) {
+        throw new Error(error.message)
+      }
     },
   },
 }

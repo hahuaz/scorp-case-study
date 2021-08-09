@@ -106,21 +106,36 @@
             <v-icon color="#10b981">mdi-chart-bubble</v-icon>
             <span class="t-font-semibold">{{ $t('hiring') }}</span>
           </span>
-          <span
+          <div v-if="userName" class="t-inline-block">
+            <v-menu offset-y>
+              <template #activator="{ on, attrs }">
+                <v-btn color="primary" dark v-bind="attrs" v-on="on">
+                  {{ userName }}
+                </v-btn>
+              </template>
+              <v-list>
+                <v-list-item @click="logoutUser">
+                  <v-list-item-title>Logout</v-list-item-title>
+                </v-list-item>
+              </v-list>
+            </v-menu>
+          </div>
+          <div
+            v-else
             class="
-              t-bg-fifth t-text-white t-py-3 t-px-5 t-rounded-md t-inline-block
+              t-bg-fifth
+              t-text-white
+              t-p-3
+              t-rounded-md
+              t-inline-block
+              t-cursor-pointer
             "
-            @click="
-              toggleLogRegVisibility()
-              drawer = false
-            "
+            @click="toggleLogRegVisibility"
           >
             <v-icon color="white">mdi-account</v-icon>
-            <span v-if="userName"> {{ userName }}</span>
-            <span v-else class="t-ml-2 t-font-semibold">{{
-              $t('Sign In')
-            }}</span>
-          </span>
+
+            <span class="t-ml-2 t-font-semibold">{{ $t('Sign In') }}</span>
+          </div>
           <v-dialog
             :value="logRegType === 'login'"
             @click:outside="toggleLogRegVisibility"
@@ -197,6 +212,14 @@ export default {
       'toggleLogRegType', // also supports payload `this.nameOfMutation(amount)`
       'toggleLogRegVisibility',
     ]),
+    async logoutUser() {
+      try {
+        await this.$store.dispatch('user/logoutUser')
+        this.$router.push('/')
+      } catch (error) {
+        throw new Error(error.message)
+      }
+    },
   },
 }
 </script>

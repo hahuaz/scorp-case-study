@@ -13,6 +13,15 @@ export const actions = {
       throw new Error("Couldn't create user!")
     }
   },
+  async logoutUser({ commit }) {
+    try {
+      await new Promise((resolve, reject) => setTimeout(resolve, 1000))
+      commit('SET_USER', null)
+    } catch (error) {
+      console.error(error)
+      throw new Error("Couldn't logout user!")
+    }
+  },
   async createMessage({ commit }, payload) {
     try {
       await new Promise((resolve, reject) => setTimeout(resolve, 1000))
