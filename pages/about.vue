@@ -1,5 +1,5 @@
 <template>
-  <div class="about t-py-14 t-px-2 t-min-h-screen">
+  <v-main class="about t-py-14 t-px-2 t-min-h-screen">
     <pre
       class="
         t-text-gray-100
@@ -22,15 +22,17 @@ We have more than 60 million registered users. We are available in more than 100
 
 We value preserving our start-up culture while growing. We are building a culture with hard-work and constant learning. We are creating an environment in which every voice is heard and every contact brings innovation.</pre
     >
-  </div>
+  </v-main>
 </template>
 
 <script>
-export default {}
+export default {
+  layout: ({ isMobile }) => (isMobile ? 'mobile' : 'default'),
+}
 </script>
 
 <style lang="scss" scoped>
-.about {
+.v-main {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;

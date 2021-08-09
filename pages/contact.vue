@@ -1,5 +1,5 @@
 <template>
-  <div class="contact t-py-14 t-px-2">
+  <v-main class="contact t-py-14 t-px-2">
     <div class="t-flex t-justify-center">
       <v-form ref="form">
         <p
@@ -88,13 +88,14 @@
         </div>
       </v-form>
     </div>
-  </div>
+  </v-main>
 </template>
 
 <script>
 import global from '~/mixins/global.js'
 export default {
   mixins: [global],
+  layout: ({ isMobile }) => (isMobile ? 'mobile' : 'default'),
   data() {
     return {
       textarea: null,
@@ -163,7 +164,7 @@ export default {
   background: transparent !important;
 }
 
-.contact {
+.v-main {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;

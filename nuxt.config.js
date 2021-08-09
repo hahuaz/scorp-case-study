@@ -82,4 +82,7 @@ export default {
     treeShake: true,
     theme: { disable: true },
   },
+  router: {
+    middleware: ['mobile'],
+  },
 }

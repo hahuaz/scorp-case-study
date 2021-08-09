@@ -1,17 +1,6 @@
 <template>
-  <div>
-    <v-app-bar color="transparent" absolute flat dark>
-      <v-app-bar-nav-icon @click="drawer = true">
-        <template #default> </template>
-      </v-app-bar-nav-icon>
-
-      <v-toolbar-title class="t-flex t-space-x-2 t-text-gray-100">
-        <v-icon> mdi-{{ pathObject.icon }} </v-icon>
-        <i18n :path="pathObject.pageName" tag="h1"> </i18n>
-      </v-toolbar-title>
-    </v-app-bar>
-
-    <v-navigation-drawer v-model="drawer" absolute temporary>
+  <v-app>
+    <v-navigation-drawer v-model="drawer" absolute temporary app>
       <div class="t-divide-y-2 t-divide-black">
         <div class="t-flex t-justify-center t-items-center t-gap-4 t-py-2">
           <!-- TODO add scorp's svg -->
@@ -127,13 +116,42 @@
             "
           >
             <v-icon color="white">mdi-account</v-icon>
-            <span class="t-ml-2 t-font-semibold">{{ $t('Sign In') }}</span>
+            <span v-if="userName"> {{ userName }}</span>
+            <span v-else class="t-ml-2 t-font-semibold">{{
+              $t('Sign In')
+            }}</span>
           </span>
+          <v-dialog
+            :value="logRegType === 'login'"
+            @click:outside="toggleLogRegVisibility"
+          >
+            <login></login>
+          </v-dialog>
+          <v-dialog
+            :value="logRegType === 'register'"
+            @click:outside="toggleLogRegVisibility"
+          >
+            <register></register>
+          </v-dialog>
           <language-input />
         </div>
       </template>
     </v-navigation-drawer>
-  </div>
+    <v-app-bar color="transparent" absolute flat dark app>
+      <v-app-bar-nav-icon @click="drawer = true">
+        <template #default> </template>
+      </v-app-bar-nav-icon>
+
+      <v-toolbar-title class="t-flex t-space-x-2 t-text-gray-100">
+        <v-icon> mdi-{{ pathObject.icon }} </v-icon>
+        <i18n :path="pathObject.pageName" tag="h1"> </i18n>
+      </v-toolbar-title>
+    </v-app-bar>
+    <Nuxt></Nuxt>
+    <footer>
+      <view-footer></view-footer>
+    </footer>
+  </v-app>
 </template>
 
 <script>
@@ -166,6 +184,12 @@ export default {
   computed: {
     pathObject() {
       return this.routeNames.find((e) => e.path === this.$route.path)
+    },
+    logRegType() {
+      return this.$store.state.ui.logRegType
+    },
+    userName() {
+      return this.$store.state.user.user?.firstname
     },
   },
   methods: {
